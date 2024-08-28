@@ -20,7 +20,7 @@ public class TodoService {
     @Transactional
     public TodoSaveResponseDto saveTodo(TodoSaveRequestDto todoSaveRequestDto){
         Todo newtodo = new Todo(
-                todoSaveRequestDto.getTitle(),todoSaveRequestDto.getUsername(),todoSaveRequestDto.getContent(),todoSaveRequestDto.getPassword()
+                todoSaveRequestDto.getTitle(),todoSaveRequestDto.getContent()
         );
         Todo savedTodo = todoRepository.save(newtodo);
         return new TodoSaveResponseDto(savedTodo.getTitle(),savedTodo.getContent());
@@ -42,7 +42,7 @@ public class TodoService {
         Todo todo = todoRepository.findById(todoId).orElseThrow(
                 ()-> new NullPointerException("없는 일정 번호입니다."));
 
-        todo.update(todoUpdateRequestDto.getUsername(),todoUpdateRequestDto.getTitle(),todoUpdateRequestDto.getContent());
+        todo.update(todoUpdateRequestDto.getTitle(),todoUpdateRequestDto.getContent());
 
         return new TodoUpdateResponseDto(
                 todo.getTitle(),todo.getContent()
