@@ -38,6 +38,7 @@ public class TodoController {
     }
 
     // 댓글 저장
+    @PostMapping("/api/comments")
     public ResponseEntity<CommentSaveResponseDto> saveComment(
             @RequestBody CommentSaveRequestDto commentSaveRequestDto
     ){
