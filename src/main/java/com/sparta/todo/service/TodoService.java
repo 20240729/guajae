@@ -1,5 +1,6 @@
 package com.sparta.todo.service;
 
+import com.sparta.todo.dto.TodoGetResponseDto;
 import com.sparta.todo.dto.TodoSaveRequestDto;
 import com.sparta.todo.dto.TodoSaveResponseDto;
 import com.sparta.todo.entity.Todo;
@@ -21,5 +22,20 @@ public class TodoService {
         Todo savedTodo = todoRepository.save(newtodo);
         return new TodoSaveResponseDto(savedTodo.getTitle(),savedTodo.getUsername(),savedTodo.getContent(),savedTodo.getPassword());
     }
+
+    public TodoGetResponseDto getTodo(Long todoId){
+        Todo todo = todoRepository.findById(todoId).orElseThrow(
+                ()-> new NullPointerException("없는 일정 번호입니다."));
+
+        return new TodoGetResponseDto(
+                todo.getId(),todo.getTitle(),todo.getContent(),todo.getUsername()
+        );
+    }
+
+
+
+
+
+
 
 }
