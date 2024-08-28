@@ -32,7 +32,7 @@ public class TodoService {
                 ()-> new NullPointerException("없는 일정 번호입니다."));
 
         return new TodoGetResponseDto(
-                todo.getId(),todo.getTitle(),todo.getContent()
+                todo.getId(),todo.getTitle(),todo.getContent(),todo.getComments()
         );
     }
 
