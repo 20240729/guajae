@@ -59,6 +59,12 @@ public class TodoService {
     }
 
     // 댓글 단건 조회
+    public CommentGetResponseDto getComment(Long commentId){
+        Comment comment = commentRepository.findById(commentId).orElseThrow(
+                ()-> new NullPointerException("없는 댓글 번호입니다.")
+        );
+        return new CommentGetResponseDto(comment.getId(), comment.getContent(), comment.getUserId());
+    }
 
     // 댓글 전체 조회
 

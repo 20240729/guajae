@@ -46,6 +46,12 @@ public class TodoController {
     }
 
     // 댓글 단건 조회
+    @GetMapping("/api/comments/{commentId}")
+    public ResponseEntity<CommentGetResponseDto> getComment(
+            @PathVariable Long commentId
+    ){
+        return ResponseEntity.ok(todoService.getComment(commentId));
+    }
 
     // 댓글 전체 조회
 
