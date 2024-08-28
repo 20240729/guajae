@@ -1,6 +1,10 @@
 package com.sparta.todo.service;
 
-import com.sparta.todo.dto.*;
+import com.sparta.todo.dto.todo.request.TodoSaveRequestDto;
+import com.sparta.todo.dto.todo.request.TodoUpdateRequestDto;
+import com.sparta.todo.dto.todo.response.TodoGetResponseDto;
+import com.sparta.todo.dto.todo.response.TodoSaveResponseDto;
+import com.sparta.todo.dto.todo.response.TodoUpdateResponseDto;
 import com.sparta.todo.entity.Todo;
 import com.sparta.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.sparta.todo.dto;
+package com.sparta.todo.dto.todo.response;
 
 import lombok.Getter;
 
