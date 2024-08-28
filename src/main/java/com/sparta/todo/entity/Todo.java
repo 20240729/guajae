@@ -26,4 +26,10 @@ public class Todo {
         this.password = password;
     }
 
+    public void update(String username,String title, String content) {
+        this.username = username;
+        this.title = title;
+        this.content = content;
+    }
+
 }

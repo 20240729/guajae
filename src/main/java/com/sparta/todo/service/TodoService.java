@@ -33,9 +33,12 @@ public class TodoService {
     }
 
     // 특정 일정을 id 기준으로 특정하고 그 일정을 수정하기
+    @Transactional
     public TodoUpdateResponseDto updateTodo(Long todoId, TodoUpdateRequestDto todoUpdateRequestDto){
         Todo todo = todoRepository.findById(todoId).orElseThrow(
                 ()-> new NullPointerException("없는 일정 번호입니다."));
+
+        todo.update(todoUpdateRequestDto.getUsername(),todoUpdateRequestDto.getTitle(),todoUpdateRequestDto.getContent());
 
         return new TodoUpdateResponseDto(
                 todo.getUsername(),todo.getTitle(),todo.getContent()
