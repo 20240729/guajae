@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TodoService {
@@ -67,6 +70,20 @@ public class TodoService {
     }
 
     // 댓글 전체 조회
+    @Transactional
+    public List<CommentGetAllResponseDto> getCommentAll(){
+        List<Comment> commentList = commentRepository.findAll();
+
+        List<CommentGetAllResponseDto> commentGetAllResponseDtoList = new ArrayList<>();
+        for(Comment comment : commentList){
+            CommentGetAllResponseDto commentGetAllResponseDto = new CommentGetAllResponseDto(
+                    comment.getId(),comment.getContent(),comment.getUserId()
+            );
+            commentGetAllResponseDtoList.add(commentGetAllResponseDto);
+        }
+
+        return commentGetAllResponseDtoList;
+    }
 
     // 댓글 수정
 
