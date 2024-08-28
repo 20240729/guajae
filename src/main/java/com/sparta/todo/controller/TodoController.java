@@ -1,8 +1,6 @@
 package com.sparta.todo.controller;
 
-import com.sparta.todo.dto.TodoGetResponseDto;
-import com.sparta.todo.dto.TodoSaveRequestDto;
-import com.sparta.todo.dto.TodoSaveResponseDto;
+import com.sparta.todo.dto.*;
 import com.sparta.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +30,12 @@ public class TodoController {
     }
 
     // 수정
+    @PutMapping("/api/todos/{todoId}")
+    public ResponseEntity<TodoUpdateResponseDto> updateTodo(
+            @PathVariable Long todoId, @RequestBody TodoUpdateRequestDto todoUpdateRequestDto
+    ){
+        return ResponseEntity.ok(todoService.updateTodo(todoId, todoUpdateRequestDto));
+    }
 
 
 

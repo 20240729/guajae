@@ -1,8 +1,6 @@
 package com.sparta.todo.service;
 
-import com.sparta.todo.dto.TodoGetResponseDto;
-import com.sparta.todo.dto.TodoSaveRequestDto;
-import com.sparta.todo.dto.TodoSaveResponseDto;
+import com.sparta.todo.dto.*;
 import com.sparta.todo.entity.Todo;
 import com.sparta.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TodoService {
     private final TodoRepository todoRepository;
 
+    // 새 일정 저장
     @Transactional
     public TodoSaveResponseDto saveTodo(TodoSaveRequestDto todoSaveRequestDto){
         Todo newtodo = new Todo(
@@ -23,12 +22,23 @@ public class TodoService {
         return new TodoSaveResponseDto(savedTodo.getTitle(),savedTodo.getUsername(),savedTodo.getContent(),savedTodo.getPassword());
     }
 
+    // 특정 일정 id 기준으로 찾기
     public TodoGetResponseDto getTodo(Long todoId){
         Todo todo = todoRepository.findById(todoId).orElseThrow(
                 ()-> new NullPointerException("없는 일정 번호입니다."));
 
         return new TodoGetResponseDto(
                 todo.getId(),todo.getTitle(),todo.getContent(),todo.getUsername()
+        );
+    }
+
+    // 특정 일정을 id 기준으로 특정하고 그 일정을 수정하기
+    public TodoUpdateResponseDto updateTodo(Long todoId, TodoUpdateRequestDto todoUpdateRequestDto){
+        Todo todo = todoRepository.findById(todoId).orElseThrow(
+                ()-> new NullPointerException("없는 일정 번호입니다."));
+
+        return new TodoUpdateResponseDto(
+                todo.getUsername(),todo.getTitle(),todo.getContent()
         );
     }
 
