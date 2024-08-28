@@ -4,14 +4,10 @@ import lombok.Getter;
 
 @Getter
 public class TodoUpdateResponseDto {
-    private final String username;
     private final String title;
     private final String content;
 
-    public TodoUpdateResponseDto(
-            String username, String title, String content
-    ) {
-        this.username = username;
+    public TodoUpdateResponseDto(String title, String content) {
         this.title = title;
         this.content = content;
     }

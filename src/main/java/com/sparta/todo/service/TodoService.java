@@ -19,7 +19,7 @@ public class TodoService {
                 todoSaveRequestDto.getTitle(),todoSaveRequestDto.getUsername(),todoSaveRequestDto.getContent(),todoSaveRequestDto.getPassword()
         );
         Todo savedTodo = todoRepository.save(newtodo);
-        return new TodoSaveResponseDto(savedTodo.getTitle(),savedTodo.getUsername(),savedTodo.getContent(),savedTodo.getPassword());
+        return new TodoSaveResponseDto(savedTodo.getTitle(),savedTodo.getContent());
     }
 
     // 특정 일정 id 기준으로 찾기
@@ -28,7 +28,7 @@ public class TodoService {
                 ()-> new NullPointerException("없는 일정 번호입니다."));
 
         return new TodoGetResponseDto(
-                todo.getId(),todo.getTitle(),todo.getContent(),todo.getUsername()
+                todo.getId(),todo.getTitle(),todo.getContent()
         );
     }
 
@@ -41,7 +41,7 @@ public class TodoService {
         todo.update(todoUpdateRequestDto.getUsername(),todoUpdateRequestDto.getTitle(),todoUpdateRequestDto.getContent());
 
         return new TodoUpdateResponseDto(
-                todo.getUsername(),todo.getTitle(),todo.getContent()
+                todo.getTitle(),todo.getContent()
         );
     }
 
