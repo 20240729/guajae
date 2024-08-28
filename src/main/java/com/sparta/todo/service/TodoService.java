@@ -1,7 +1,9 @@
 package com.sparta.todo.service;
 
 import com.sparta.todo.dto.*;
+import com.sparta.todo.entity.Comment;
 import com.sparta.todo.entity.Todo;
+import com.sparta.todo.repository.CommentRepository;
 import com.sparta.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class TodoService {
     private final TodoRepository todoRepository;
+    private final CommentRepository commentRepository;
 
     // 새 일정 저장
     @Transactional
@@ -44,6 +47,24 @@ public class TodoService {
                 todo.getUsername(),todo.getTitle(),todo.getContent()
         );
     }
+
+    // 댓글 저장
+    @Transactional
+    public CommentSaveResponseDto saveComment(CommentSaveRequestDto commentSaveRequestDto){
+        Comment newcomment = new Comment(
+                commentSaveRequestDto.getContent(), commentSaveRequestDto.getUserId()
+        );
+        Comment savedComment = commentRepository.save(newcomment);
+        return new CommentSaveResponseDto(savedComment.getContent(),savedComment.getUserId());
+    }
+
+    // 댓글 단건 조회
+
+    // 댓글 전체 조회
+
+    // 댓글 수정
+
+    // 댓글 삭제
 
 
 

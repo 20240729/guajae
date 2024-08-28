@@ -37,6 +37,21 @@ public class TodoController {
         return ResponseEntity.ok(todoService.updateTodo(todoId, todoUpdateRequestDto));
     }
 
+    // 댓글 저장
+    public ResponseEntity<CommentSaveResponseDto> saveComment(
+            @RequestBody CommentSaveRequestDto commentSaveRequestDto
+    ){
+        return ResponseEntity.ok(todoService.saveComment(commentSaveRequestDto));
+    }
+
+    // 댓글 단건 조회
+
+    // 댓글 전체 조회
+
+    // 댓글 수정
+
+    // 댓글 삭제
+
 
 
 
