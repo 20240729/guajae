@@ -1,11 +1,15 @@
 API 명세서
 ----------------
-| 기능          | Method | URL                | request | response | 상태코드        |
-|-------------|--------|--------------------|---------|----------|-------------|
-| 저장          | POST   | /api/schedule      | body    | 등록 정보    | 200 : 정상 등록 |
-| 단건 조회       | GET    | /api/schedule/{id} | -       | 단건 응답 정보 | 200 : 정상 조회 |
-|  수정 | PUT    | /api/schedule/{id} | body | 수정 정보    | 200 : 정상 수정 |
-|  |     |       |         |          |  |
+| 기능       | Method | URL                       | request | response  | 상태코드        |
+|----------|--------|---------------------------|---------|-----------|-------------|
+| 일정 저장    | POST   | /api/todos                | body    | 등록 정보     | 200 : 정상 등록 |
+| 일정 단건 조회 | GET    | /api/todos/{todoId}       | -       | 단건 응답 정보  | 200 : 정상 조회 |
+| 일정 수정    | PUT    | /api/todos/{todoId}       | body    | 수정 정보     | 200 : 정상 수정 |
+| 댓글 저장    | POST   | /api/comments             | body    | 등록 정보     | 200 : 정상 등록 |
+| 댓글 단건 조회 | GET    | /api/comments/{commentId} | -       | 단건 응답 정보  | 200 : 정상 조회 |
+| 댓글 전체 조회 | GET    | /api/comments             | -       | 모든 댓글 리스트 | 200         |
+| 댓글 수정    | PUT    | /api/comments/{commentId} | body    | 수정 정보     | 200         |
+| 댓글 삭제    | DELETE | /api/comments/{commentId} | -       | -         | 200         |
 ------------------------------------
 일정
 
