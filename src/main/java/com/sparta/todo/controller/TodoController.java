@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class TodoController {
@@ -54,6 +56,10 @@ public class TodoController {
     }
 
     // 댓글 전체 조회
+    @GetMapping("/api/comments")
+    public ResponseEntity<List<CommentGetAllResponseDto>> getAllComments(){
+        return ResponseEntity.ok(todoService.getCommentAll());
+    }
 
     // 댓글 수정
 
