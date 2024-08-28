@@ -16,10 +16,10 @@ public class TodoService {
     @Transactional
     public TodoSaveResponseDto saveTodo(TodoSaveRequestDto todoSaveRequestDto){
         Todo newtodo = new Todo(
-                todoSaveRequestDto.getTitle(),todoSaveRequestDto.getUsername(),todoSaveRequestDto.getContent()
+                todoSaveRequestDto.getTitle(),todoSaveRequestDto.getUsername(),todoSaveRequestDto.getContent(),todoSaveRequestDto.getPassword()
         );
         Todo savedTodo = todoRepository.save(newtodo);
-        return new TodoSaveResponseDto(savedTodo.getTitle(),savedTodo.getUsername(),savedTodo.getContent());
+        return new TodoSaveResponseDto(savedTodo.getTitle(),savedTodo.getUsername(),savedTodo.getContent(),savedTodo.getPassword());
     }
 
 }

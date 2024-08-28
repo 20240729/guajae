@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TodoController {
     private final TodoService todoService;
 
+    // 일정 저장
     @PostMapping("/api/todos")
     public ResponseEntity<TodoSaveResponseDto> saveTodo(
             @RequestBody TodoSaveRequestDto todoSaveRequestDto
@@ -22,6 +23,10 @@ public class TodoController {
                 todoService.saveTodo(todoSaveRequestDto)
         );
     }
+
+    // 단건 조회
+
+    // 수정
 
 
 
