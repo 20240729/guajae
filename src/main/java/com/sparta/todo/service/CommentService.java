@@ -1,6 +1,7 @@
 package com.sparta.todo.service;
 
 import com.sparta.todo.dto.comment.request.CommentSaveRequestDto;
+import com.sparta.todo.dto.comment.response.CommentGetResponseDto;
 import com.sparta.todo.dto.comment.response.CommentSaveResponseDto;
 import com.sparta.todo.entity.Comment;
 import com.sparta.todo.entity.Todo;
@@ -30,6 +31,12 @@ public class CommentService {
     }
 
     // 댓글 단건 조회
+    public CommentGetResponseDto getComment(Long commentId){
+        Comment comment = commentRepository.findById(commentId).orElseThrow(
+                ()-> new NullPointerException("없는 댓글 번호입니다.")
+        );
+        return new CommentGetResponseDto(comment.getId(), comment.getComment());
+    }
 
     // 댓글 전체 조회
 
